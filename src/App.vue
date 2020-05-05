@@ -1,19 +1,23 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Genres</h1>
+    <GenreList />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import GenreList from "@/components/GenreList.vue";
+import store from "@/store";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    GenreList
+  },
+  mounted() {
+    store.dispatch("genre/fetchGenres");
   }
-}
+};
 </script>
 
 <style>
