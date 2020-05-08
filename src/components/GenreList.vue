@@ -7,8 +7,9 @@
 <script>
 import GenreCard from "@/components/GenreCard.vue";
 import store from "@/store/index";
-// why wasn't mapState working?
 
+// Bud -- I was trying to use mapState here, but it wasn't working...
+// Any ideas? Computed seems like the wrong way to do this
 export default {
   computed: {
     genres() {
