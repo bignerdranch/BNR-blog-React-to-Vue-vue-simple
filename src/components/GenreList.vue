@@ -6,19 +6,23 @@
 
 <script>
 import GenreCard from "@/components/GenreCard.vue";
-import store from "@/store/index";
+import genreService from "@/services/GenreService";
 
-// Bud -- I was trying to use mapState here, but it wasn't working...
-// Any ideas? Computed seems like the wrong way to do this
 export default {
-  computed: {
-    genres() {
-      return store.state.genre.genres;
-    },
-  },
   components: {
-    GenreCard,
+    GenreCard
   },
+  data() {
+    return {
+      genres: []
+    };
+  },
+  mounted() {
+    genreService
+      .getGenres()
+      .then(res => (this.genres = res.data))
+      .catch(error => console.log("There was an error", error));
+  }
 };
 </script>
 
